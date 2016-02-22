@@ -74,20 +74,20 @@ app.get('/tools/validate', routes.toolsDpValidate);
 app.get('/tools/view', routes.toolsDpView);
 app.get('/tools/dataproxy', routes.toolsDataProxy);
 // Data
-app.get('/data', routes.data);
-app.get('/data.json', routes.dataJson);
-app.get('/data/search', routes.dataSearch);
-// backwards compatibility
-app.get('/data/:name/datapackage.json', function(req, res) {
-  res.redirect('/data/core/' + req.params.name + '/datapackage.json');
-});
+// app.get('/data', routes.data);
+// app.get('/data.json', routes.dataJson);
+// app.get('/data/search', routes.dataSearch);
+// // backwards compatibility
+// app.get('/data/:name/datapackage.json', function(req, res) {
+//   res.redirect('/data/core/' + req.params.name + '/datapackage.json');
+// });
 
-// more data stuff
-app.get('/data/:owner/:id/datapackage.json', routes.dataPackageShowJSON);
-// data "API"
-app.get('/data/:owner/:id/r/:name', routes.dataShow);
-app.get('/data/:owner/:id', routes.dataPackageShow);
-app.get('/data/:owner', routes.communityUser);
+// // more data stuff
+// app.get('/data/:owner/:id/datapackage.json', routes.dataPackageShowJSON);
+// // data "API"
+// app.get('/data/:owner/:id/r/:name', routes.dataShow);
+// app.get('/data/:owner/:id', routes.dataPackageShow);
+// app.get('/data/:owner', routes.communityUser);
 
 // Admin
 app.get('/admin/reload', routes.adminReload);
