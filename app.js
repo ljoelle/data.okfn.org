@@ -67,12 +67,12 @@ app.get('/standards/csv', redirect('/doc/csv'));
 app.get('/doc', routes.doc);
 app.get('/doc/:page', routes.doc);
 // Tools
-app.get('/tools', routes.tools);
-app.get('/tools/create', routes.toolsDpCreate);
-app.get('/tools/validate.json', routes.toolsDpValidateJSON);
-app.get('/tools/validate', routes.toolsDpValidate);
-app.get('/tools/view', routes.toolsDpView);
-app.get('/tools/dataproxy', routes.toolsDataProxy);
+// app.get('/tools', routes.tools);
+// app.get('/tools/create', routes.toolsDpCreate);
+// app.get('/tools/validate.json', routes.toolsDpValidateJSON);
+// app.get('/tools/validate', routes.toolsDpValidate);
+// app.get('/tools/view', routes.toolsDpView);
+// app.get('/tools/dataproxy', routes.toolsDataProxy);
 // Data
 // app.get('/data', routes.data);
 // app.get('/data.json', routes.dataJson);

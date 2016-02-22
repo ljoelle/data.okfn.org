@@ -151,68 +151,68 @@ exports.doc = function(req, res) {
 // Tools
 // ========================================================
 
-exports.tools = function(req, res) {
-  res.render('/tools/index.html', {});
-};
+// exports.tools = function(req, res) {
+//   res.render('/tools/index.html', {});
+// };
 
-exports.toolsDpCreate = function(req, res) {
-  res.render('tools/dp/create.html');
-};
+// exports.toolsDpCreate = function(req, res) {
+//   res.render('tools/dp/create.html');
+// };
 
-exports.toolsDpValidateJSON = function(req, res) {
-  // handle base urls as well as full urls
-  var dpurl = spec.parse(req.query.url).dataPackageJsonUrl;
-  validate.validateUrl(dpurl, function(data) {
-    res.json(data);
-  });
-};
+// exports.toolsDpValidateJSON = function(req, res) {
+//   // handle base urls as well as full urls
+//   var dpurl = spec.parse(req.query.url).dataPackageJsonUrl;
+//   validate.validateUrl(dpurl, function(data) {
+//     res.json(data);
+//   });
+// };
 
-exports.toolsDpValidate = function(req, res) {
-  var url = spec.parse(req.query.url).dataPackageJsonUrl;
-  if (!url) {
-    res.render('tools/dp/validate.html');
-  } else {
-    validate.validateUrl(url, function(data) {
-      res.render('tools/dp/validate.html', {
-        url: url,
-        result: data,
-        errorsAsJson: JSON.stringify(data.errors, null, 2)
-      });
-    });
-  }
-};
+// exports.toolsDpValidate = function(req, res) {
+//   var url = spec.parse(req.query.url).dataPackageJsonUrl;
+//   if (!url) {
+//     res.render('tools/dp/validate.html');
+//   } else {
+//     validate.validateUrl(url, function(data) {
+//       res.render('tools/dp/validate.html', {
+//         url: url,
+//         result: data,
+//         errorsAsJson: JSON.stringify(data.errors, null, 2)
+//       });
+//     });
+//   }
+// };
 
-exports.toolsDpView = function(req, res) {
-  var url = req.query.url;
-  if (!url) {
-    res.render('tools/dp/view.html');
-  } else {
-    tools.load(url, function(err, dpkg) {
-      if (err) {
-        res.send('<p>There was an error.</p>\n\n' + err.message);
-        return;
-      }
+// exports.toolsDpView = function(req, res) {
+//   var url = req.query.url;
+//   if (!url) {
+//     res.render('tools/dp/view.html');
+//   } else {
+//     tools.load(url, function(err, dpkg) {
+//       if (err) {
+//         res.send('<p>There was an error.</p>\n\n' + err.message);
+//         return;
+//       }
 
-      dpkg.resources.forEach(function(resource, idx) {
-        // set special local url for use in javascript
-        resource.localurl = '/tools/dataproxy/?url=' + encodeURIComponent(resource.url);
-      });
-      var dataViews = dpkg.views || [];
-      res.render('tools/dp/view.html', {
-        dataset: dpkg,
-        jsonDataPackage: JSON.stringify(dpkg),
-        dataViews: JSON.stringify(dataViews),
-        url: url
-      });
-    });
-  }
-};
+//       dpkg.resources.forEach(function(resource, idx) {
+//         // set special local url for use in javascript
+//         resource.localurl = '/tools/dataproxy/?url=' + encodeURIComponent(resource.url);
+//       });
+//       var dataViews = dpkg.views || [];
+//       res.render('tools/dp/view.html', {
+//         dataset: dpkg,
+//         jsonDataPackage: JSON.stringify(dpkg),
+//         dataViews: JSON.stringify(dataViews),
+//         url: url
+//       });
+//     });
+//   }
+// };
 
-// proxy data
-exports.toolsDataProxy = function(req, res) {
-  var url = req.query.url;
-  request.get(url).pipe(res);
-}
+// // proxy data
+// exports.toolsDataProxy = function(req, res) {
+//   var url = req.query.url;
+//   request.get(url).pipe(res);
+// }
 
 // ========================================================
 // Data section
